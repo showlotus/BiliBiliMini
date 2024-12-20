@@ -1,38 +1,79 @@
-# 藏起来！哔哩哔哩
+# electron-vite-vue
 
-+ 小窗口
-+ 总在最前
-+ 支持全局快捷键隐藏窗口
-+ 同时兹词 Windows/Mac
+🥳 Really simple `Electron` + `Vue` + `Vite` boilerplate.
 
-完美解决只有一块屏幕又想在上班时候刷b站的刚需（x   
-大概是这个星球上最适合你的bilibili客户端（x2
+<!-- [![awesome-vite](https://awesome.re/mentioned-badge.svg)](https://github.com/vitejs/awesome-vite) -->
+<!-- [![Netlify Status](https://api.netlify.com/api/v1/badges/ae3863e3-1aec-4eb1-8f9f-1890af56929d/deploy-status)](https://app.netlify.com/sites/electron-vite/deploys) -->
+<!-- [![GitHub license](https://img.shields.io/github/license/caoxiemeihao/electron-vite-vue)](https://github.com/electron-vite/electron-vite-vue/blob/main/LICENSE) -->
+<!-- [![GitHub stars](https://img.shields.io/github/stars/caoxiemeihao/electron-vite-vue?color=fa6470)](https://github.com/electron-vite/electron-vite-vue) -->
+<!-- [![GitHub forks](https://img.shields.io/github/forks/caoxiemeihao/electron-vite-vue)](https://github.com/electron-vite/electron-vite-vue) -->
+[![GitHub Build](https://github.com/electron-vite/electron-vite-vue/actions/workflows/build.yml/badge.svg)](https://github.com/electron-vite/electron-vite-vue/actions/workflows/build.yml)
+[![GitHub Discord](https://img.shields.io/badge/chat-discord-blue?logo=discord)](https://discord.gg/sRqjYpEAUK)
 
-![demo](https://github.com/chitosai/bilimini/blob/master/images/demo.gif)
+## Features
 
-下载地址：[百度网盘](https://pan.baidu.com/s/1jIHnRk6) / [Github](https://github.com/chitosai/bilimini/releases)
+📦 Out of the box  
+🎯 Based on the official [template-vue-ts](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-vue-ts), less invasive  
+🌱 Extensible, really simple directory structure  
+💪 Support using Node.js API in Electron-Renderer  
+🔩 Support C/C++ native addons  
+🖥 It's easy to implement multiple windows  
 
+## Quick Setup
 
-## For Developers
+```sh
+# clone the project
+git clone https://github.com/electron-vite/electron-vite-vue.git
 
+# enter the project directory
+cd electron-vite-vue
+
+# install dependency
+npm install
+
+# develop
+npm run dev
 ```
-npm install   
-npm start
+
+## Debug
+
+![electron-vite-react-debug.gif](https://github.com/electron-vite/electron-vite-react/blob/main/electron-vite-react-debug.gif?raw=true)
+
+## Directory
+
+```diff
++ ├─┬ electron
++ │ ├─┬ main
++ │ │ └── index.ts    entry of Electron-Main
++ │ └─┬ preload
++ │   └── index.ts    entry of Preload-Scripts
+  ├─┬ src
+  │ └── main.ts       entry of Electron-Renderer
+  ├── index.html
+  ├── package.json
+  └── vite.config.ts
 ```
 
-使用electron-builder打包：
+<!--
+## Be aware
 
+🚨 By default, this template integrates Node.js in the Renderer process. If you don't need it, you just remove the option below. [Because it will modify the default config of Vite](https://github.com/electron-vite/vite-plugin-electron-renderer#config-presets-opinionated).
+
+```diff
+# vite.config.ts
+
+export default {
+  plugins: [
+-   // Use Node.js API in the Renderer-process
+-   renderer({
+-     nodeIntegration: true,
+-   }),
+  ],
+}
 ```
-npm run win64
-npm run win32
-npm run mac
-```
+-->
 
+## FAQ
 
-## 关于功能需求
-
-感谢大家长久以来对bilimini提出的各类建议，但是请注意，在大部分情况下bilimini都是利用B站已有的界面来制作功能，我们**不太可能**会基于B站的API去主动实现一些功能，例如**历史记录、稍后再看**等等。     
-
-这是因为B站虽然一般一年多才换一次外观，但是皮肤之下的API却是经常在改变的，有时换上一套新接口之后不到半年就又会换其他API。bilimini作为一款业余爱好软件不可能一直跟随B站的节奏去适应新API，毕竟我们又没有KPI要求（     
-
-所以，希望大家能理解我们提供的功能大都是基于B站目前已有的界面来实现的，即便这样大概每年也必须大修一次来适应B站的改动，我们只能尽量在功能和可长久维护上寻求一个平衡点，希望大家能理解。
+- [C/C++ addons, Node.js modules - Pre-Bundling](https://github.com/electron-vite/vite-plugin-electron-renderer#dependency-pre-bundling)
+- [dependencies vs devDependencies](https://github.com/electron-vite/vite-plugin-electron-renderer#dependencies-vs-devdependencies)
